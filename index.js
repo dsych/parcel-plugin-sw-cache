@@ -32,7 +32,7 @@ module.exports = bundler => {
 		if (config.disablePlugin) return;
 
 		if(config.swDest){
-			config.swDest = path.join(outDir, config.swDest);
+			config.swDest = path.resolve(outDir, config.swDest);
 		}
 
 		if (process.env.NODE_ENV === "development" && !config.inDev) {
