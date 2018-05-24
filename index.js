@@ -32,7 +32,7 @@ module.exports = bundler => {
 		if (config.disablePlugin) return;
 
 		if(config.swDest){
-			config.swDest = path.resolve(outDir, config.swDest);
+			config.swDest = config.useRelativeDest ? config.swDest : path.resolve(outDir, config.swDest);
 		}
 
 		if (process.env.NODE_ENV === "development" && !config.inDev) {
@@ -45,6 +45,7 @@ module.exports = bundler => {
 		const swConfig = Object.assign({}, config);
 		delete swConfig.strategy;
 		delete swConfig.inDev;
+        delete swConfig.useRelativeDest;
         
 		Object.keys(swConfig).forEach(function(key) {
 			if (swConfig[key] === "undefined") {
