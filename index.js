@@ -39,7 +39,6 @@ module.exports = bundler => {
 			if (fs.existsSync(config.swDest || swDest)) {
 				fs.unlinkSync(config.swDest || swDest);
 			}
-			return;
 		}
 
 		const swConfig = Object.assign({}, config);
